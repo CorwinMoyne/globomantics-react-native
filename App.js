@@ -4,8 +4,10 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Platform } from "react-native";
 import "react-native-gesture-handler";
+import Footer from "./Footer";
 import Header from "./Header";
 import HomePage from "./Home";
+import { navigationRef } from "./RootNavigation";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +30,7 @@ export default function App() {
       style={{
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
+      ref={navigationRef}
     >
       <Stack.Navigator initialRouteName="Globomantics" headerMode="screen">
         <Stack.Screen
@@ -38,6 +41,7 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
+      <Footer />
     </NavigationContainer>
   );
 }
